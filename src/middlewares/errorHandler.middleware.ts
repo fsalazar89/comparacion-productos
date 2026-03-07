@@ -20,7 +20,7 @@ export function errorHandler(
     res.status(status).json({
         estado: false,
         mensaje: message,
-        ...(process.env.AMBIENTE_APP !== 'local' && {
+        ...(process.env.AMBIENTE_APP !== 'produccion' && {
             datos: err.stack,
         }),
     });

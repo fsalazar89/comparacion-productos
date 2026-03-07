@@ -5,21 +5,24 @@ export interface IRespuesta {
     status?: number;
 }
 
-export interface IEspecificaciones {
-  bateria: string;
-  camara: string;
-  os: string;
-  color: string;
-}
-
 export interface IProducto {
-  id: string;
+  id: number;
   nombre: string;
-  descripcion: string;
+  descripcion?: string;
   precio: number;
-  marca: string;
-  url_imagen: string;
-  especificaciones: IEspecificaciones;
+  valoracion?: number;
+  tamano?: string;
+  peso?: number;
+  color?: string;
+  url_imagen?: string;
+  tipo?: string;
+  marca?: string;
+  modelo_version?: string;
+  sistema_operativo?: string;
+  bateria?: string;
+  camara?: string;
+  memoria?: string;
+  almacenamiento?: string;
 }
 
 export interface IParametros {

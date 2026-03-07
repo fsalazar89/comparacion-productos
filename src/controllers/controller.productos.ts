@@ -28,7 +28,7 @@ export class ControllerProductos {
         next: NextFunction
     ) => {
         try {
-            const resultado: IRespuesta = await this.servicioProductos.serviceDetalleProductoPorId(req.params.id);
+            const resultado: IRespuesta = await this.servicioProductos.serviceDetalleProductoPorId(req.params.id, req.query.campos);
             return res.status(200).json(resultado);
         } catch (error) {
             next(error);

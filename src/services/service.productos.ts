@@ -33,9 +33,9 @@ export class ServicioProductos {
         }
     }
 
-    public serviceDetalleProductoPorId = async (datos?: any) => {
+    public serviceDetalleProductoPorId = async (id?: any, campos?: any) => {
         try {
-            const listaProductos: IRespuesta = await this.modelProductos.modelDetalleProductoPorId(datos);
+            const listaProductos: IRespuesta = await this.modelProductos.modelDetalleProductoPorId(id, campos);
             console.log(listaProductos);
             if (!listaProductos.estado) {
                 const err: any = new Error(listaProductos.mensaje ?? 'Error interno al obtener los productos');

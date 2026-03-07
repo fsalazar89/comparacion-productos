@@ -1,6 +1,5 @@
 import { Utils } from "../utils/utils";
 import pool from "../config/db/db.challenge";
-import { IParametros } from '../interfaces/interface';
 
 export class ModelProductos {
   private utils: Utils;
@@ -10,7 +9,25 @@ export class ModelProductos {
   }
 
   private _prepararCamposQuery = (camposQuery?: string) => {
-    const columnasPermitidas = ['id', 'nombre', 'descripcion', 'precio', 'marca', 'url_imagen', 'especificaciones'];
+    const columnasPermitidas = [
+      'id',
+      'nombre',
+      'descripcion',
+      'precio',
+      'valoracion',
+      'tamano',
+      'peso',
+      'color',
+      'url_imagen',
+      'tipo',
+      'marca',
+      'modelo_version',
+      'sistema_operativo',
+      'bateria',
+      'camara',
+      'memoria',
+      'almacenamiento'
+    ];
 
     let seleccion = columnasPermitidas.join(', ');
     if (camposQuery) {
@@ -37,14 +54,14 @@ export class ModelProductos {
     }
   };
 
-  public modelDetalleProductoPorId = async (id: string) => {
+  public modelDetalleProductoPorId = async (id: string, camposQuery?: string) => {
     let clienteDb;
     try {
       if (isNaN(Number(id))) throw new Error("ID no válido");
 
       clienteDb = await pool.connect();
-      // Aquí traemos el "*" o todos los campos detallados
-      const sql = `SELECT * FROM productos WHERE id = $1`;
+      let seleccion = this._prepararCamposQuery(camposQuery);
+      const sql = `SELECT ${seleccion} FROM productos WHERE id = $1`;
       const resultado = await pool.query(sql, [id]);
 
       if (resultado.rows.length === 0) {
