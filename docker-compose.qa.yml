@@ -1,0 +1,23 @@
+services:
+  api:
+    container_name: comparacion-productos-api-qa
+    env_file:
+      - ./environments/.env.qa
+    environment:
+      DB_MS_HOST: db
+      DB_MS_PORT: 5432
+      DB_MS_DB: productos
+      DB_MS_USER: postgres
+      DB_MS_PASS: 123456
+    command: ["node", "dist/server.js", "--prod"]
+    ports:
+      - "8089:8089"
+    volumes:
+      - /opt/ssl:/opt/ssl:ro
+
+  db:
+    container_name: postgres_productos_qa
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: productos
