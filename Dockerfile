@@ -15,7 +15,7 @@ WORKDIR /app
 ENV NODE_ENV=production
 
 COPY package*.json ./
-RUN npm i --omit=dev
+RUN npm i
 
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
