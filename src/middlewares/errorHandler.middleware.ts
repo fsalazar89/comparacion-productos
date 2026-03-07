@@ -8,12 +8,20 @@ export function errorHandler(
 ) {
     console.error(err);
 
-    const status = err.status || 500;
+    const isTimeoutError =
+        err?.timeout === true ||
+        err?.code === 'ETIMEDOUT' ||
+        err?.message === 'Response timeout';
+    const status = isTimeoutError ? 503 : err?.status || 500;
+    const message = isTimeoutError
+        ? 'Tiempo de espera agotado'
+        : err?.message || 'Error interno';
 
     res.status(status).json({
-        message: 'Error interno',
-        ...(process.env.AMBIENTE_APP !== 'produccion' && {
-            stack: err.stack,
+        estado: false,
+        mensaje: message,
+        ...(process.env.AMBIENTE_APP !== 'local' && {
+            datos: err.stack,
         }),
     });
 }
