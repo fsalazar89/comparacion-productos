@@ -76,6 +76,22 @@ const openApiSpec = {
               },
             },
           },
+          '400': {
+            description: 'Error al consultar datos',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+          '500': {
+            description: 'Error inesperado',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
         },
       },
     },
@@ -111,6 +127,14 @@ const openApiSpec = {
                     },
                   ],
                 },
+              },
+            },
+          },
+          '422': {
+            description: "Parametro 'campos' invalido",
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
               },
             },
           },
@@ -165,7 +189,15 @@ const openApiSpec = {
             },
           },
           '400': {
-            description: 'ID invalido',
+            description: "Parametro 'id' invalido",
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+          '422': {
+            description: "Parametro 'campos' invalido",
             content: {
               'application/json': {
                 schema: { $ref: '#/components/schemas/ErrorResponse' },
@@ -234,7 +266,23 @@ const openApiSpec = {
             },
           },
           '500': {
-            description: 'Error interno o validacion no controlada',
+            description: 'Error interno',
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+          '400': {
+            description: "Parametro 'ids' obligatorio",
+            content: {
+              'application/json': {
+                schema: { $ref: '#/components/schemas/ErrorResponse' },
+              },
+            },
+          },
+          '422': {
+            description: "Parametros 'ids' o 'campos' invalidos",
             content: {
               'application/json': {
                 schema: { $ref: '#/components/schemas/ErrorResponse' },
