@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { ModelLimiter } from '../config/config.limits';
 import { ControllerProductos } from '../controllers/controller.productos';
 import { ValidacionCampos } from '../middlewares/validacion.campos';
+import { authJwt } from '../middlewares/authJwt.middleware';
 
 export class RouterProductos {
     public router: Router;
@@ -21,18 +22,21 @@ export class RouterProductos {
     private inicializarRutas() {
         this.router.get(`/${this.base}`,
             this.limiter.limiteSolicitudes(10, 1),
+            authJwt,
             this.validacionCampos.validarCamposOpcional,
             this.controllerProductos.controllerListarProductos.bind(this.controllerProductos)
         );
 
         this.router.get(`/${this.base}/comparar`,
             this.limiter.limiteSolicitudes(10, 1),
+            authJwt,
             this.validacionCampos.validarComparacion,
             this.controllerProductos.controllerCompararProductos.bind(this.controllerProductos)
         );
 
         this.router.get(`/${this.base}/:id`,
             this.limiter.limiteSolicitudes(10, 1),
+            authJwt,
             this.validacionCampos.validarIdRuta,
             this.validacionCampos.validarCamposOpcional,
             this.controllerProductos.controllerDetalleProductoPorId.bind(this.controllerProductos)
