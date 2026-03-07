@@ -1,6 +1,7 @@
 import { Application } from "express";
 import { RouterInicial } from "./route.init";
 import { RouterProductos } from "./route.productos";
+import { swaggerRouter } from "../config/swagger.config";
 
 export class RoutesConfigV1 {
   private app: Application;
@@ -12,6 +13,7 @@ export class RoutesConfigV1 {
     const initRoute = new RouterInicial();
     const routerProductos = new RouterProductos();
 
+    this.app.use(this.version, swaggerRouter);
     this.app.use(this.version, initRoute.router);
     this.app.use(this.version, routerProductos.router);
   };
