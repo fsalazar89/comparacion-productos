@@ -17,7 +17,7 @@ API REST para listar productos, consultar detalle y comparar articulos por atrib
 - Contrato de respuesta consistente: `estado`, `mensaje`, `datos`.
 - Seleccion de campos con `campos=nombre,precio,color` para enfocar comparaciones.
 - Documentacion activa en Swagger para facilitar pruebas tecnicas.
-- El endpoint de comparacion actualmente devuelve mensajes de IDs invalidos en `mensaje`, y en algunos casos puede responder `500` si faltan parametros.
+- Validacion de entrada con Joi en middleware (`id`, `ids`, `campos`) antes de llegar al controlador.
 
 ## Setup rapido
 
@@ -83,4 +83,45 @@ curl "http://localhost:3000/api/v1/productos/comparar?ids=1,2,3&campos=nombre,pr
   - `400` si `id` no es numerico.
   - `404` si el producto no existe.
 - `GET /productos/comparar`:
-  - Si `ids` es invalido puede retornar `500` con mensaje de validacion de modelo.
+  - `400` si `ids` no se envia.
+  - `422` si `ids` tiene menos de 2 valores o contiene IDs invalidos.
+
+## Pruebas automatizadas
+
+Se implementaron pruebas unitarias y de integracion con `Jest`.
+
+- Unitarias:
+  - `middlewares`: validacion de campos (`Joi`) y `errorHandler`.
+  - `services`: logica de negocio y propagacion de errores.
+  - `controllers`: delegacion a servicios y respuestas HTTP.
+  - `models`: construccion de SQL y manejo de respuestas/errores.
+- Integracion:
+  - Flujo HTTP completo de endpoints principales (`/`, `/productos`, `/productos/:id`, `/productos/comparar`, `/openapi.json`) con `supertest`.
+  - Se mockea la capa de base de datos para no depender de PostgreSQL real en testing.
+
+### Comandos de ejecucion
+
+Todas las pruebas:
+```bash
+npm test
+```
+
+Solo unitarias:
+```bash
+npm run test:unit
+```
+
+Solo integracion:
+```bash
+npm run test:integration
+```
+
+Modo watch:
+```bash
+npm run test:watch
+```
+
+### Nota sobre salida en consola
+
+Si usas `--silent` en Jest, se ocultan `console.log` y `console.error` durante los tests.
+Esto no cambia el resultado (pass/fail), solo limpia la salida.
