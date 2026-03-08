@@ -8,7 +8,7 @@ export class ModelInicial {
   }
 
   modelInicio = async () => {
-    return { estado: true, mensaje: "Modelo Inicial Activo", datos: null };
+    return { estado: true, mensaje: "API - Consulta y comparacion de productos", datos: null };
   }
 
 }
