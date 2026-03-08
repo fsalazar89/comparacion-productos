@@ -135,7 +135,7 @@ Esto no cambia el resultado (pass/fail), solo limpia la salida.
 
 ## Mejoras futuras
 
-- Implementacion de certificados TLS.
-- Implementacion de proxy reverse para mejorar la seguridad.
-- Limitacion de recursos del docker para optimizar los recursos del servidor.
-- Implementacion de segmentacion de permisos con middleware para autorizacion de acceso segmentado a los endpoint.
+- Implementación de certificados TLS.
+- Implementación de proxy inverso para mejorar la seguridad.
+- Limitación de recursos de Docker para optimizar los recursos del servidor.
+- Implementación de segmentación de permisos con middleware para autorización de acceso segmentado a los endpoints.
