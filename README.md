@@ -50,7 +50,7 @@ Ejemplo comun en local:
 
 Definir token (valor de `JWT_STATIC_TOKEN`):
 ```bash
-TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjb21wYXJhY2lvbi1wcm9kdWN0b3MiLCJzY29wZSI6ImFwaTpyZWFkIiwiaWF0IjoxNzcyOTE2NjA5fQ.iyBiXIlW7N6agW-3j3Ut-pgxtktAhhDFyjCpUSVmdws"
+TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
 Listar productos:
