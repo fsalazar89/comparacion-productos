@@ -48,34 +48,39 @@ Ejemplo comun en local:
 
 ## Ejemplos curl
 
+Definir token (valor de `JWT_STATIC_TOKEN`):
+```bash
+TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjb21wYXJhY2lvbi1wcm9kdWN0b3MiLCJzY29wZSI6ImFwaTpyZWFkIiwiaWF0IjoxNzcyOTE2NjA5fQ.iyBiXIlW7N6agW-3j3Ut-pgxtktAhhDFyjCpUSVmdws"
+```
+
 Listar productos:
 ```bash
-curl "http://localhost:3000/api/v1/productos"
+curl -H "Authorization: Bearer $TOKEN" "http://localhost:3000/api/v1/productos"
 ```
 
 Listar productos solo con campos:
 ```bash
-curl "http://localhost:3000/api/v1/productos?campos=id,nombre,precio,color"
+curl -H "Authorization: Bearer $TOKEN" "http://localhost:3000/api/v1/productos?campos=id,nombre,precio,color"
 ```
 
 Detalle por ID:
 ```bash
-curl "http://localhost:3000/api/v1/productos/1"
+curl -H "Authorization: Bearer $TOKEN" "http://localhost:3000/api/v1/productos/1"
 ```
 
 Detalle por ID con campos:
 ```bash
-curl "http://localhost:3000/api/v1/productos/1?campos=nombre,precio,bateria"
+curl -H "Authorization: Bearer $TOKEN" "http://localhost:3000/api/v1/productos/1?campos=nombre,precio,bateria"
 ```
 
 Comparar productos:
 ```bash
-curl "http://localhost:3000/api/v1/productos/comparar?ids=1,2,3"
+curl -H "Authorization: Bearer $TOKEN" "http://localhost:3000/api/v1/productos/comparar?ids=1,2,3"
 ```
 
 Comparar productos con campos:
 ```bash
-curl "http://localhost:3000/api/v1/productos/comparar?ids=1,2,3&campos=nombre,precio,valoracion,bateria,camara"
+curl -H "Authorization: Bearer $TOKEN" "http://localhost:3000/api/v1/productos/comparar?ids=1,2,3&campos=nombre,precio,valoracion,bateria,camara"
 ```
 
 ## Respuestas de error actuales
