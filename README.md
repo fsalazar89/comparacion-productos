@@ -55,32 +55,44 @@ TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 Listar productos:
 ```bash
-curl -H "Authorization: Bearer $TOKEN" "http://localhost:3000/api/v1/productos"
+curl -v -X GET "http://187.77.235.144:8080/api/v1/productos" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json"
 ```
 
 Listar productos solo con campos:
 ```bash
-curl -H "Authorization: Bearer $TOKEN" "http://localhost:3000/api/v1/productos?campos=id,nombre,precio,color"
+curl -v -X GET "http://187.77.235.144:8080/api/v1/productos?campos=id,nombre,precio,color" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json"
 ```
 
 Detalle por ID:
 ```bash
-curl -H "Authorization: Bearer $TOKEN" "http://localhost:3000/api/v1/productos/1"
+curl -v -X GET "http://187.77.235.144:8080/api/v1/productos/1" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json"
 ```
 
-Detalle por ID con campos:
+Detalle por ID con filtro de campos:
 ```bash
-curl -H "Authorization: Bearer $TOKEN" "http://localhost:3000/api/v1/productos/1?campos=nombre,precio,bateria"
+curl -v -X GET "http://187.77.235.144:8080/api/v1/productos/1?campos=nombre,precio,bateria" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json"
 ```
 
 Comparar productos:
 ```bash
-curl -H "Authorization: Bearer $TOKEN" "http://localhost:3000/api/v1/productos/comparar?ids=1,2,3"
+curl -v -X GET "http://187.77.235.144:8080/api/v1/productos/comparar?ids=1,2,3" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json"
 ```
 
 Comparar productos con campos:
 ```bash
-curl -H "Authorization: Bearer $TOKEN" "http://localhost:3000/api/v1/productos/comparar?ids=1,2,3&campos=nombre,precio,valoracion,bateria,camara"
+curl -v -X GET "http://187.77.235.144:8080/api/v1/productos/comparar?ids=1,2,3&campos=nombre,precio,valoracion,bateria,camara" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json"
 ```
 
 ## Respuestas de error actuales
