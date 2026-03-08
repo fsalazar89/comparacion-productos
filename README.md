@@ -48,7 +48,7 @@ Ejemplo comun en local:
 
 ## Ejemplos curl
 
-Definir token (valor de `JWT_STATIC_TOKEN`):
+Definir token (valor de `JWT_STATIC_TOKEN`) en las variables de entorno:
 ```bash
 TOKEN="xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
@@ -132,3 +132,10 @@ npm run test:watch
 
 Si usas `--silent` en Jest, se ocultan `console.log` y `console.error` durante los tests.
 Esto no cambia el resultado (pass/fail), solo limpia la salida.
+
+## Mejoras futuras
+
+- Implementacion de certificados TLS.
+- Implementacion de proxy reverse para mejorar la seguridad.
+- Limitacion de recursos del docker para optimizar los recursos del servidor.
+- Implementacion de segmentacion de permisos con middleware para autorizacion de acceso segmentado a los endpoint.
