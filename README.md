@@ -4,7 +4,7 @@ API REST para listar productos, consultar detalle y comparar articulos por atrib
 
 ## Arquitectura
 
-![Diagrama de Arquitectura](https://chevi.co/admin/imags/arquitecuta-api.png)
+![Diagrama de Arquitectura](https://chevi.co/admin/imags/aquitectura-api-v1.png)
 
 - `routes`: define endpoints (`/`, `/productos`, `/productos/:id`, `/productos/comparar`).
 - `controllers`: recibe request, delega al servicio y retorna respuesta HTTP.
